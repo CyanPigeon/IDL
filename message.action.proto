@@ -1,9 +1,8 @@
 syntax = "proto3";
-package douyin.extra.second;
 
 import "google/api/annotations.proto";
 
-option go_package = "demo/api;message";
+option go_package = "demo/api/dy;message";
 
 service MessageAction{
   rpc MessageActionSrv(MessageActionRequest) returns (MessageActionResponse){
