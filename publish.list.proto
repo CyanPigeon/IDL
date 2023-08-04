@@ -1,9 +1,8 @@
 syntax = "proto3";
-package douyin.core;
 
 import "google/api/annotations.proto";
 
-option go_package = "demo/api;publish";
+option go_package = "demo/api/dy;publish";
 
 import "api/dy/common/video.proto";
 

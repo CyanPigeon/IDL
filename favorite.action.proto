@@ -1,9 +1,8 @@
 syntax = "proto3";
-package douyin.extra.first;
 
 import "google/api/annotations.proto";
 
-option go_package = "demo/api;favorite";
+option go_package = "demo/api/dy;favorite";
 
 service LikeAction{
   rpc LikeActionSrv(LikeActionRequest) returns (LikeActionResponse){
