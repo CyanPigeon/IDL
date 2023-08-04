@@ -10,8 +10,7 @@ import "api/dy/common/video.proto";
 service PublishList{
   rpc PublishListSrv(PublishListRequest) returns (PublishListResponse){
     option(google.api.http) = {
-      get:"/douyin/publish/list/"
-      body:"*"
+      get:"/douyin/publish/list"
     };
   }
 }

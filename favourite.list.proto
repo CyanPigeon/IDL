@@ -5,14 +5,12 @@ import "google/api/annotations.proto";
 
 option go_package = "demo/api;favorite";
 
-import "api/dy/common/user.proto";
 import "api/dy/common/video.proto";
 
 service LikeList{
   rpc LikeListSrv(LikeListRequest) returns (LikeListResponse){
     option(google.api.http) = {
-      get:"/douyin/favorite/list/"
-      body:"*"
+      get:"/douyin/favorite/list"
     };
   }
 }

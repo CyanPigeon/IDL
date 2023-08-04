@@ -9,8 +9,7 @@ import "api/dy/common/user.proto";
 service User{
   rpc UserSrv(UserRequest) returns (UserResponse){
     option(google.api.http) = {
-      get:"/douyin/user/"
-      body:"*"
+      get:"/douyin/user"
     };
   }
 }

@@ -10,8 +10,7 @@ import "api/dy/common/video.proto";
 service Feed{
   rpc FeedSrv(FeedRequest) returns (FeedResponse){
     option(google.api.http) = {
-      get:"/douyin/feed/"
-      body:"*"
+      get:"/douyin/feed"
     };
   }
 }

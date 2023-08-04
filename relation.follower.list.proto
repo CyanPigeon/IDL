@@ -10,8 +10,7 @@ import "api/dy/common/user.proto";
 service FollowerList{
   rpc FollowerListSrv(FollowerListRequest) returns (FollowerListResponse){
     option(google.api.http) = {
-      get:"/douyin/relation/follower/list/"
-      body:"*"
+      get:"/douyin/relation/follower/list"
     };
   }
 }

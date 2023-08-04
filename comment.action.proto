@@ -9,7 +9,7 @@ import "api/dy/common/comment.proto";
 service CommentAction{
   rpc CommentActionSrv(CommentActionRequest) returns (CommentActionResponse){
     option(google.api.http) = {
-      post:"/douyin/comment/action/"
+      post:"/douyin/comment/action"
       body:"*"
     };
   }

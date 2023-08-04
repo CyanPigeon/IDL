@@ -8,7 +8,7 @@ option go_package = "demo/api;favorite";
 service LikeAction{
   rpc LikeActionSrv(LikeActionRequest) returns (LikeActionResponse){
     option(google.api.http) = {
-      post:"/douyin/favorite/action/"
+      post:"/douyin/favorite/action"
       body:"*"
     };
   }

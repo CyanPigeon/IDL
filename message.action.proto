@@ -8,7 +8,7 @@ option go_package = "demo/api;message";
 service MessageAction{
   rpc MessageActionSrv(MessageActionRequest) returns (MessageActionResponse){
     option(google.api.http) = {
-      post:"/douyin/message/action/"
+      post:"/douyin/message/action"
       body:"*"
     };
   }

@@ -8,7 +8,7 @@ option go_package = "demo/api;publish";
 service PublishAction{
   rpc PublishActionSrv(PublishActionRequest) returns (PublishActionResponse){
     option(google.api.http) = {
-      post:"/douyin/publish/action/"
+      post:"/douyin/publish/action"
       body:"*"
     };
   }

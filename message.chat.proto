@@ -10,8 +10,7 @@ import "api/dy/common/message.proto";
 service MessageHistory{
   rpc MessageHistorySrv(MessageHistoryRequest) returns (MessageHistoryResponse){
     option(google.api.http) = {
-      get:"/douyin/message/chat/"
-      body:"*"
+      get:"/douyin/message/chat"
     };
   }
 }
