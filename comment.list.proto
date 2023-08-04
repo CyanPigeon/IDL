@@ -7,6 +7,15 @@ option go_package = "demo/api;comment";
 import "api/dy/common/user.proto";
 import "api/dy/common/comment.proto";
 
+service CommentList{
+  rpc CommentListSrv(CommentListRequest) returns (CommentListResponse){
+    option(google.api.http) = {
+      get:"/douyin/comment/list/"
+      body:"*"
+    };
+  }
+}
+
 message CommentListRequest {
   string token = 1;   // 用户鉴权token
   int64 video_id = 2; // 视频id

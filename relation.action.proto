@@ -5,13 +5,22 @@ import "google/api/annotations.proto";
 
 option go_package = "demo/api;relation";
 
-message RelationActionRequest {
+service FollowAction{
+  rpc FollowActionSrv(FollowActionRequest) returns (FollowActionResponse){
+    option(google.api.http) = {
+      post:"/douyin/relation/action/"
+      body:"*"
+    };
+  }
+}
+
+message FollowActionRequest {
   string token = 1;      // 用户鉴权token
   int64 to_user_id = 2;  // 对方用户id
   int32 action_type = 3; // 1-关注，2-取消关注
 }
 
-message RelationActionResponse {
+message FollowActionResponse {
   int32 status_code = 1;          // 状态码，0-成功，其他值-失败
   optional string status_msg = 2; // 返回状态描述
 }

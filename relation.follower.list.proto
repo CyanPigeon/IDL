@@ -7,12 +7,21 @@ option go_package = "demo/api;relation";
 
 import "api/dy/common/user.proto";
 
-message RelationFollowerListRequest {
+service FollowerList{
+  rpc FollowerListSrv(FollowerListRequest) returns (FollowerListResponse){
+    option(google.api.http) = {
+      get:"/douyin/relation/follower/list/"
+      body:"*"
+    };
+  }
+}
+
+message FollowerListRequest {
   int64 user_id = 1; // 用户id
   string token = 2;  // 用户鉴权token
 }
 
-message RelationFollowerListResponse {
+message FollowerListResponse {
   int32 status_code = 1;          // 状态码，0-成功，其他值-失败
   optional string status_msg = 2; // 返回状态描述
   repeated User user_list = 3;    // 用户列表

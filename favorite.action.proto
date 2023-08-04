@@ -5,13 +5,22 @@ import "google/api/annotations.proto";
 
 option go_package = "demo/api;favorite";
 
-message FavoriteActionRequest {
+service LikeAction{
+  rpc LikeActionSrv(LikeActionRequest) returns (LikeActionResponse){
+    option(google.api.http) = {
+      post:"/douyin/favorite/action/"
+      body:"*"
+    };
+  }
+}
+
+message LikeActionRequest {
   string token = 1;      // 用户鉴权token
   int64 video_id = 2;    // 视频id
   int32 action_type = 3; // 1-点赞，2-取消点赞
 }
 
-message FavoriteActionResponse {
+message LikeActionResponse {
   int32 status_code = 1;          // 状态码，0-成功，其他值-失败
   optional string status_msg = 2; // 返回状态描述
 }

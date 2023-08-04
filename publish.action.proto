@@ -5,6 +5,15 @@ import "google/api/annotations.proto";
 
 option go_package = "demo/api;publish";
 
+service PublishAction{
+  rpc PublishActionSrv(PublishActionRequest) returns (PublishActionResponse){
+    option(google.api.http) = {
+      post:"/douyin/publish/action/"
+      body:"*"
+    };
+  }
+}
+
 message PublishActionRequest {
   string token = 1; // 用户鉴权token
   bytes data = 2;   // 视频数据

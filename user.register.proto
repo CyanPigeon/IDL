@@ -5,6 +5,15 @@ import "google/api/annotations.proto";
 
 option go_package = "demo/api;user";
 
+service UserRegister{
+  rpc UserRegisterSrv(UserRegisterRequest) returns (UserRegisterResponse){
+    option(google.api.http) = {
+      post:"/douyin/user/register/"
+      body:"*"
+    };
+  }
+}
+
 message UserRegisterRequest {
   string username = 1; // 注册用户名，最长32个字符
   string password = 2; // 密码，最长32个字符
