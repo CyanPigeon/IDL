@@ -5,15 +5,22 @@ import "google/api/annotations.proto";
 
 option go_package = "demo/api;favorite";
 
-import "api/dy/common/user.proto";
 import "api/dy/common/video.proto";
 
-message FavoriteListRequest {
+service LikeList{
+  rpc LikeListSrv(LikeListRequest) returns (LikeListResponse){
+    option(google.api.http) = {
+      get:"/douyin/favorite/list"
+    };
+  }
+}
+
+message LikeListRequest {
   int64 user_id = 1; // 用户id
   string token = 2;  // 用户鉴权token
 }
 
-message FavoriteListResponse {
+message LikeListResponse {
   int32 status_code = 1;          // 状态码，0-成功，其他值-失败
   optional string status_msg = 2; // 返回状态描述
   repeated Video video_list = 3;  // 用户点赞视频列表

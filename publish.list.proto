@@ -7,6 +7,14 @@ option go_package = "demo/api;publish";
 
 import "api/dy/common/video.proto";
 
+service PublishList{
+  rpc PublishListSrv(PublishListRequest) returns (PublishListResponse){
+    option(google.api.http) = {
+      get:"/douyin/publish/list"
+    };
+  }
+}
+
 message PublishListRequest {
   int64 user_id = 1; // 用户id
   string token = 2;  // 用户鉴权token

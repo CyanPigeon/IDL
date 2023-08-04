@@ -6,6 +6,15 @@ option go_package = "demo/api;comment";
 
 import "api/dy/common/comment.proto";
 
+service CommentAction{
+  rpc CommentActionSrv(CommentActionRequest) returns (CommentActionResponse){
+    option(google.api.http) = {
+      post:"/douyin/comment/action"
+      body:"*"
+    };
+  }
+}
+
 message CommentActionRequest {
   string token = 1;      // 用户鉴权token
   int64 video_id = 2;    // 视频id
