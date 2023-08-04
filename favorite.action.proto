@@ -1,6 +1,10 @@
 syntax = "proto3";
 package douyin.extra.first;
 
+import "google/api/annotations.proto";
+
+option go_package = "demo/api;favorite";
+
 message FavoriteActionRequest {
   string token = 1;      // 用户鉴权token
   int64 video_id = 2;    // 视频id

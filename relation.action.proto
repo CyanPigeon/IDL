@@ -1,6 +1,10 @@
 syntax = "proto3";
 package douyin.extra.second;
 
+import "google/api/annotations.proto";
+
+option go_package = "demo/api;relation";
+
 message RelationActionRequest {
   string token = 1;      // 用户鉴权token
   int64 to_user_id = 2;  // 对方用户id
