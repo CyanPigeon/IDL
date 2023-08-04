@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-option go_package = "demo/api/dy/common;common";
+option go_package = "toktik/api/toktik/common;common";
 
-import "api/dy/common/user.proto";
+import "api/toktik/common/user.proto";
 
 message Comment {
   int64 id = 1;           // 视频评论id
