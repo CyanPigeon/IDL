@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "demo/api/dy/common;common";
+option go_package = "toktik/api/toktik/common;common";
 
 message Message {
   int64 id = 1;                    // 消息id
