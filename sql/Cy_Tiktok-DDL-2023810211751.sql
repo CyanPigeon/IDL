@@ -1,20 +1,21 @@
 DROP TABLE IF EXISTS tiktok_user;
 CREATE TABLE tiktok_user(
-    UID BIGINT NOT NULL,
-    USRENAME VARCHAR(50) NOT NULL,
-    PASSWORD VARCHAR(255) NOT NULL,
-    AVATAR VARCHAR(255) NOT NULL,
-    BACKGROUND_IMG VARCHAR(255) NOT NULL,
-    TOTAL_FAVORITED BIGINT NOT NULL DEFAULT  0,
-    FELLOW_COUNT BIGINT NOT NULL DEFAULT  0,
-    FELLOWER_COUNT BIGINT NOT NULL DEFAULT  0,
-    VIDEO_COUNT INTEGER NOT NULL DEFAULT  0,
-    CREATED_BY BIGINT NOT NULL,
-    CREATED_TIME TIMESTAMP NOT NULL,
-    UPDATED_BY BIGINT NOT NULL,
-    UPDATED_TIME TIMESTAMP NOT NULL,
-    DELETE boolean NOT NULL DEFAULT  false,
-    PRIMARY KEY (UID)
+                            UID BIGINT NOT NULL,
+                            USRENAME VARCHAR(50) NOT NULL,
+                            PASSWORD VARCHAR(255) NOT NULL,
+                            AVATAR VARCHAR(255) NOT NULL,
+                            BACKGROUND_IMG VARCHAR(255) NOT NULL,
+                            TOTAL_FAVORITED BIGINT NOT NULL DEFAULT  0,
+                            FELLOW_COUNT BIGINT NOT NULL DEFAULT  0,
+                            FELLOWER_COUNT BIGINT NOT NULL DEFAULT  0,
+                            VIDEO_COUNT BIGINT NOT NULL DEFAULT  0,
+                            SIGNATURE VARCHAR(255) NOT NULL,
+                            CREATED_BY BIGINT NOT NULL,
+                            CREATED_TIME TIMESTAMP NOT NULL,
+                            UPDATED_BY BIGINT NOT NULL,
+                            UPDATED_TIME TIMESTAMP NOT NULL,
+                            DELETE boolean NOT NULL DEFAULT  false,
+                            PRIMARY KEY (UID)
 );
 
 COMMENT ON TABLE tiktok_user IS '用户表';
@@ -27,6 +28,7 @@ COMMENT ON COLUMN tiktok_user.TOTAL_FAVORITED IS '总点赞数;默认0';
 COMMENT ON COLUMN tiktok_user.FELLOW_COUNT IS '关注人数;关注数量，默认0';
 COMMENT ON COLUMN tiktok_user.FELLOWER_COUNT IS '被关注人数;被关注数量，默认0';
 COMMENT ON COLUMN tiktok_user.VIDEO_COUNT IS '作品数量;作品数量，默认0';
+COMMENT ON COLUMN tiktok_user.SIGNATURE IS '个人简介;个人简介';
 COMMENT ON COLUMN tiktok_user.CREATED_BY IS '创建人;创建人';
 COMMENT ON COLUMN tiktok_user.CREATED_TIME IS '创建时间;创建时间';
 COMMENT ON COLUMN tiktok_user.UPDATED_BY IS '更新人';
@@ -35,15 +37,15 @@ COMMENT ON COLUMN tiktok_user.DELETE IS '是否删除;是否删除';
 
 DROP TABLE IF EXISTS fellow;
 CREATE TABLE fellow(
-    FELLOW_ID BIGINT NOT NULL,
-    USER_UID BIGINT NOT NULL,
-    FELLOW_UID BIGINT NOT NULL,
-    CREATED_BY BIGINT NOT NULL,
-    CREATED_TIME TIMESTAMP NOT NULL,
-    UPDATED_BY BIGINT NOT NULL,
-    UPDATED_TIME TIMESTAMP NOT NULL,
-    DELETE BOOL DEFAULT  false,
-    PRIMARY KEY (FELLOW_ID)
+                       FELLOW_ID BIGINT NOT NULL,
+                       USER_UID BIGINT NOT NULL,
+                       FELLOW_UID BIGINT NOT NULL,
+                       CREATED_BY BIGINT NOT NULL,
+                       CREATED_TIME TIMESTAMP NOT NULL,
+                       UPDATED_BY BIGINT NOT NULL,
+                       UPDATED_TIME TIMESTAMP NOT NULL,
+                       DELETE BOOL DEFAULT  false,
+                       PRIMARY KEY (FELLOW_ID)
 );
 
 COMMENT ON TABLE fellow IS '关注表';
@@ -58,20 +60,20 @@ COMMENT ON COLUMN fellow.DELETE IS '是否删除';
 
 DROP TABLE IF EXISTS video;
 CREATE TABLE video(
-    VIDEO_ID BIGINT NOT NULL,
-    USER_UID BIGINT NOT NULL,
-    DESCRIPATH VARCHAR(255) NOT NULL,
-    TITLE VARCHAR(255) NOT NULL,
-    COVER_PATH VARCHAR(255) NOT NULL,
-    VIDEO_PATH VARCHAR(255) NOT NULL,
-    LIKE_COUNT BIGINT NOT NULL DEFAULT  0,
-    COMMENT_COUNT BIGINT NOT NULL DEFAULT  0,
-    CREATED_BY BIGINT NOT NULL,
-    CREATED_TIME TIMESTAMP NOT NULL,
-    UPDATED_BY BIGINT NOT NULL,
-    UPDATED_TIME TIMESTAMP NOT NULL,
-    DELETE BOOL NOT NULL DEFAULT  false,
-    PRIMARY KEY (VIDEO_ID)
+                      VIDEO_ID BIGINT NOT NULL,
+                      USER_UID BIGINT NOT NULL,
+                      DESCRIPATH VARCHAR(255) NOT NULL,
+                      TITLE VARCHAR(255) NOT NULL,
+                      COVER_PATH VARCHAR(255) NOT NULL,
+                      VIDEO_PATH VARCHAR(255) NOT NULL,
+                      LIKE_COUNT BIGINT NOT NULL DEFAULT  0,
+                      COMMENT_COUNT BIGINT NOT NULL DEFAULT  0,
+                      CREATED_BY BIGINT NOT NULL,
+                      CREATED_TIME TIMESTAMP NOT NULL,
+                      UPDATED_BY BIGINT NOT NULL,
+                      UPDATED_TIME TIMESTAMP NOT NULL,
+                      DELETE BOOL NOT NULL DEFAULT  false,
+                      PRIMARY KEY (VIDEO_ID)
 );
 
 COMMENT ON TABLE video IS '视频表';
@@ -91,16 +93,16 @@ COMMENT ON COLUMN video.DELETE IS '是否删除';
 
 DROP TABLE IF EXISTS comment;
 CREATE TABLE comment(
-    COMMENT_ID BIGINT NOT NULL,
-    USER_UID BIGINT NOT NULL,
-    VIDEO_ID BIGINT NOT NULL,
-    CONTENT VARCHAR(255) NOT NULL,
-    CREATED_BY BIGINT NOT NULL,
-    CREATED_TIME TIMESTAMP NOT NULL,
-    UPDATED_BY BIGINT NOT NULL,
-    UPDATED_TIME TIMESTAMP NOT NULL,
-    DELETE BOOL NOT NULL DEFAULT  false,
-    PRIMARY KEY (COMMENT_ID)
+                        COMMENT_ID BIGINT NOT NULL,
+                        USER_UID BIGINT NOT NULL,
+                        VIDEO_ID BIGINT NOT NULL,
+                        CONTENT VARCHAR(255) NOT NULL,
+                        CREATED_BY BIGINT NOT NULL,
+                        CREATED_TIME TIMESTAMP NOT NULL,
+                        UPDATED_BY BIGINT NOT NULL,
+                        UPDATED_TIME TIMESTAMP NOT NULL,
+                        DELETE BOOL NOT NULL DEFAULT  false,
+                        PRIMARY KEY (COMMENT_ID)
 );
 
 COMMENT ON TABLE comment IS '评论表';
@@ -116,15 +118,15 @@ COMMENT ON COLUMN comment.DELETE IS '是否删除';
 
 DROP TABLE IF EXISTS user_like_video;
 CREATE TABLE user_like_video(
-    LIKE_ID BIGINT NOT NULL,
-    USER_UID BIGINT NOT NULL,
-    VIDEO_ID BIGINT NOT NULL,
-    CREATED_BY BIGINT NOT NULL,
-    CREATED_TIME TIMESTAMP NOT NULL,
-    UPDATED_BY BIGINT NOT NULL,
-    UPDATED_TIME TIMESTAMP NOT NULL,
-    DELETE BOOL NOT NULL DEFAULT  false,
-    PRIMARY KEY (LIKE_ID)
+                                LIKE_ID BIGINT NOT NULL,
+                                USER_UID BIGINT NOT NULL,
+                                VIDEO_ID BIGINT NOT NULL,
+                                CREATED_BY BIGINT NOT NULL,
+                                CREATED_TIME TIMESTAMP NOT NULL,
+                                UPDATED_BY BIGINT NOT NULL,
+                                UPDATED_TIME TIMESTAMP NOT NULL,
+                                DELETE BOOL NOT NULL DEFAULT  false,
+                                PRIMARY KEY (LIKE_ID)
 );
 
 COMMENT ON TABLE user_like_video IS '用户点赞表';
@@ -139,15 +141,15 @@ COMMENT ON COLUMN user_like_video.DELETE IS '是否删除';
 
 DROP TABLE IF EXISTS message;
 CREATE TABLE message(
-    MESSAGE_ID BIGINT NOT NULL,
-    UID_SEND BIGINT NOT NULL,
-    UID_RECEIVE BIGINT NOT NULL,
-    CONTENT VARCHAR(255) NOT NULL,
-    CREATED_BY BIGINT NOT NULL,
-    CREATED_TIME TIMESTAMP NOT NULL,
-    UPDATED_BY BIGINT NOT NULL,
-    UPDATED_TIME TIMESTAMP NOT NULL,
-    PRIMARY KEY (MESSAGE_ID)
+                        MESSAGE_ID BIGINT NOT NULL,
+                        UID_SEND BIGINT NOT NULL,
+                        UID_RECEIVE BIGINT NOT NULL,
+                        CONTENT VARCHAR(255) NOT NULL,
+                        CREATED_BY BIGINT NOT NULL,
+                        CREATED_TIME TIMESTAMP NOT NULL,
+                        UPDATED_BY BIGINT NOT NULL,
+                        UPDATED_TIME TIMESTAMP NOT NULL,
+                        PRIMARY KEY (MESSAGE_ID)
 );
 
 COMMENT ON TABLE message IS '私聊消息表';
