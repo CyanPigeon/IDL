@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS tiktok_user;
 CREATE TABLE tiktok_user(
                             UID BIGINT NOT NULL,
-                            USRENAME VARCHAR(50) NOT NULL,
+                            USERNAME VARCHAR(50) NOT NULL,
                             PASSWORD VARCHAR(255) NOT NULL,
                             AVATAR VARCHAR(255) NOT NULL,
                             BACKGROUND_IMG VARCHAR(255) NOT NULL,
@@ -9,6 +9,7 @@ CREATE TABLE tiktok_user(
                             FELLOW_COUNT BIGINT NOT NULL DEFAULT  0,
                             FELLOWER_COUNT BIGINT NOT NULL DEFAULT  0,
                             VIDEO_COUNT BIGINT NOT NULL DEFAULT  0,
+                            FAVORITE_COUNT BIGINT NOT NULL DEFAULT  0,
                             SIGNATURE VARCHAR(255) NOT NULL,
                             CREATED_BY BIGINT NOT NULL,
                             CREATED_TIME TIMESTAMP NOT NULL,
@@ -20,14 +21,15 @@ CREATE TABLE tiktok_user(
 
 COMMENT ON TABLE tiktok_user IS '用户表';
 COMMENT ON COLUMN tiktok_user.UID IS 'UID';
-COMMENT ON COLUMN tiktok_user.USRENAME IS '用户昵称';
+COMMENT ON COLUMN tiktok_user.USERNAME IS '用户昵称';
 COMMENT ON COLUMN tiktok_user.PASSWORD IS '加密后的密码';
 COMMENT ON COLUMN tiktok_user.AVATAR IS '头像;头像地址，有默认头像';
 COMMENT ON COLUMN tiktok_user.BACKGROUND_IMG IS '背景图片;有默认地址';
-COMMENT ON COLUMN tiktok_user.TOTAL_FAVORITED IS '总点赞数;默认0';
+COMMENT ON COLUMN tiktok_user.TOTAL_FAVORITED IS '总获赞数;被点赞数';
 COMMENT ON COLUMN tiktok_user.FELLOW_COUNT IS '关注人数;关注数量，默认0';
 COMMENT ON COLUMN tiktok_user.FELLOWER_COUNT IS '被关注人数;被关注数量，默认0';
 COMMENT ON COLUMN tiktok_user.VIDEO_COUNT IS '作品数量;作品数量，默认0';
+COMMENT ON COLUMN tiktok_user.FAVORITE_COUNT IS '总点赞数;总点赞数';
 COMMENT ON COLUMN tiktok_user.SIGNATURE IS '个人简介;个人简介';
 COMMENT ON COLUMN tiktok_user.CREATED_BY IS '创建人;创建人';
 COMMENT ON COLUMN tiktok_user.CREATED_TIME IS '创建时间;创建时间';
@@ -35,28 +37,28 @@ COMMENT ON COLUMN tiktok_user.UPDATED_BY IS '更新人';
 COMMENT ON COLUMN tiktok_user.UPDATED_TIME IS '更新时间;更新时间';
 COMMENT ON COLUMN tiktok_user.DELETE IS '是否删除;是否删除';
 
-DROP TABLE IF EXISTS fellow;
-CREATE TABLE fellow(
-                       FELLOW_ID BIGINT NOT NULL,
+DROP TABLE IF EXISTS follow;
+CREATE TABLE follow(
+                       FOLLOW_ID BIGINT NOT NULL,
                        USER_UID BIGINT NOT NULL,
-                       FELLOW_UID BIGINT NOT NULL,
+                       FOLLOW_UID BIGINT NOT NULL,
                        CREATED_BY BIGINT NOT NULL,
                        CREATED_TIME TIMESTAMP NOT NULL,
                        UPDATED_BY BIGINT NOT NULL,
                        UPDATED_TIME TIMESTAMP NOT NULL,
                        DELETE BOOL DEFAULT  false,
-                       PRIMARY KEY (FELLOW_ID)
+                       PRIMARY KEY (FOLLOW_ID)
 );
 
-COMMENT ON TABLE fellow IS '关注表';
-COMMENT ON COLUMN fellow.FELLOW_ID IS '关注ID;关注表的';
-COMMENT ON COLUMN fellow.USER_UID IS '主动关注人的UID;主动关注人的UID';
-COMMENT ON COLUMN fellow.FELLOW_UID IS '关注人的UID;关注人的UID';
-COMMENT ON COLUMN fellow.CREATED_BY IS '创建人';
-COMMENT ON COLUMN fellow.CREATED_TIME IS '创建时间';
-COMMENT ON COLUMN fellow.UPDATED_BY IS '更新人';
-COMMENT ON COLUMN fellow.UPDATED_TIME IS '更新时间';
-COMMENT ON COLUMN fellow.DELETE IS '是否删除';
+COMMENT ON TABLE follow IS '关注表';
+COMMENT ON COLUMN follow.FOLLOW_ID IS '关注ID;关注表的';
+COMMENT ON COLUMN follow.USER_UID IS '主动关注人的UID;主动关注人的UID';
+COMMENT ON COLUMN follow.FOLLOW_UID IS '关注人的UID;关注人的UID';
+COMMENT ON COLUMN follow.CREATED_BY IS '创建人';
+COMMENT ON COLUMN follow.CREATED_TIME IS '创建时间';
+COMMENT ON COLUMN follow.UPDATED_BY IS '更新人';
+COMMENT ON COLUMN follow.UPDATED_TIME IS '更新时间';
+COMMENT ON COLUMN follow.DELETE IS '是否删除';
 
 DROP TABLE IF EXISTS video;
 CREATE TABLE video(
@@ -161,4 +163,3 @@ COMMENT ON COLUMN message.CREATED_BY IS '创建人';
 COMMENT ON COLUMN message.CREATED_TIME IS '创建时间';
 COMMENT ON COLUMN message.UPDATED_BY IS '更新人';
 COMMENT ON COLUMN message.UPDATED_TIME IS '更新时间';
-
