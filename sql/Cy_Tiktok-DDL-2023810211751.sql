@@ -6,8 +6,8 @@ CREATE TABLE tiktok_user(
                             AVATAR VARCHAR(255) NOT NULL,
                             BACKGROUND_IMG VARCHAR(255) NOT NULL,
                             TOTAL_FAVORITED BIGINT NOT NULL DEFAULT  0,
-                            FELLOW_COUNT BIGINT NOT NULL DEFAULT  0,
-                            FELLOWER_COUNT BIGINT NOT NULL DEFAULT  0,
+                            FOLLOW_COUNT BIGINT NOT NULL DEFAULT  0,
+                            FOLLOWER_COUNT BIGINT NOT NULL DEFAULT  0,
                             VIDEO_COUNT BIGINT NOT NULL DEFAULT  0,
                             FAVORITE_COUNT BIGINT NOT NULL DEFAULT  0,
                             SIGNATURE VARCHAR(255) NOT NULL,
@@ -26,8 +26,8 @@ COMMENT ON COLUMN tiktok_user.PASSWORD IS '加密后的密码';
 COMMENT ON COLUMN tiktok_user.AVATAR IS '头像;头像地址，有默认头像';
 COMMENT ON COLUMN tiktok_user.BACKGROUND_IMG IS '背景图片;有默认地址';
 COMMENT ON COLUMN tiktok_user.TOTAL_FAVORITED IS '总获赞数;被点赞数';
-COMMENT ON COLUMN tiktok_user.FELLOW_COUNT IS '关注人数;关注数量，默认0';
-COMMENT ON COLUMN tiktok_user.FELLOWER_COUNT IS '被关注人数;被关注数量，默认0';
+COMMENT ON COLUMN tiktok_user.FOLLOW_COUNT IS '关注人数;关注数量，默认0';
+COMMENT ON COLUMN tiktok_user.FOLLOWER_COUNT IS '被关注人数;被关注数量，默认0';
 COMMENT ON COLUMN tiktok_user.VIDEO_COUNT IS '作品数量;作品数量，默认0';
 COMMENT ON COLUMN tiktok_user.FAVORITE_COUNT IS '总点赞数;总点赞数';
 COMMENT ON COLUMN tiktok_user.SIGNATURE IS '个人简介;个人简介';
